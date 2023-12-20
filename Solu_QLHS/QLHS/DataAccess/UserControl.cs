@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.SqlClient;
+using QLHS.Model;
 namespace QLHS.DataAccess
 {
     class UserControl
@@ -28,6 +29,7 @@ namespace QLHS.DataAccess
                             {
                                 tenTK = reader["tenTK"].ToString(),
                                 matKhau = reader["matKhau"].ToString(),
+                                tenNguoidung = reader["tenNguoidung"].ToString(),
                             };
                         }
                     }
