@@ -3,41 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Data.SqlClient;
 using QLHS.Model;
+using QLHS.DataAccess;
+
 namespace QLHS.DataAccess
 {
     class UserControl
     {
-        private string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=QLHS;Integrated Security=True";
+        Connection connection = new Connection();
         public User GetUser(string tentk)
         {
             User user = null;
+            connection.Connect();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand("select * from TaiKhoan WHERE tenTK = @tenTK", connection.SqlConnection))
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand("select * from TaiKhoan WHERE tenTK = @tenTK", connection))
-                {
-                    command.Parameters.AddWithValue("@tenTK", tentk);
+                command.Parameters.AddWithValue("@tenTK", tentk);
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
                     {
-                        if (reader.Read())
+                        user = new User()
                         {
-                            user = new User()
-                            {
-                                tenTK = reader["tenTK"].ToString(),
-                                matKhau = reader["matKhau"].ToString(),
-                                tenNguoidung = reader["tenNguoidung"].ToString(),
-                            };
-                        }
+                            tenTK = reader["tenTK"].ToString(),
+                            matKhau = reader["matKhau"].ToString(),
+                            tenNguoidung = reader["tenNguoidung"].ToString(),
+                        };
                     }
                 }
             }
-
             return user;
         }
-
     }
 }

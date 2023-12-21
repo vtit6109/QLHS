@@ -59,15 +59,5 @@ namespace QLHS.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap KENSTONE_LOGO_1 {
-            get {
-                object obj = ResourceManager.GetObject("KENSTONE-LOGO-1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLHS.FormFiles
+namespace QLHS.Views
 {
     public partial class frm_ChangePassword : Form
     {
         public frm_ChangePassword()
         {
-            InitializeComponent();
+           InitializeComponent();
         }
     }
 }

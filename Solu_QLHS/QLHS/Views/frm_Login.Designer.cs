@@ -1,4 +1,4 @@
-﻿namespace QLHS.FormFiles
+﻿namespace QLHS.Views
 {
     partial class frm_Login
     {
@@ -30,13 +30,13 @@
         {
             this.tbox_userName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.link_fogotPass = new System.Windows.Forms.LinkLabel();
+            this.check_showpass = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tbox_pass = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.btn_login = new System.Windows.Forms.Button();
+            this.link_register = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -51,8 +51,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.linkLabel1);
-            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.link_fogotPass);
+            this.panel1.Controls.Add(this.check_showpass);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.tbox_pass);
@@ -62,25 +62,26 @@
             this.panel1.Size = new System.Drawing.Size(369, 118);
             this.panel1.TabIndex = 1;
             // 
-            // linkLabel1
+            // link_fogotPass
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(249, 88);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(80, 13);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Quên mật khẩu";
+            this.link_fogotPass.AutoSize = true;
+            this.link_fogotPass.Location = new System.Drawing.Point(249, 88);
+            this.link_fogotPass.Name = "link_fogotPass";
+            this.link_fogotPass.Size = new System.Drawing.Size(80, 13);
+            this.link_fogotPass.TabIndex = 5;
+            this.link_fogotPass.TabStop = true;
+            this.link_fogotPass.Text = "Quên mật khẩu";
             // 
-            // checkBox1
+            // check_showpass
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(125, 88);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(95, 17);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Hiện mật khẩu";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.check_showpass.AutoSize = true;
+            this.check_showpass.Location = new System.Drawing.Point(125, 88);
+            this.check_showpass.Name = "check_showpass";
+            this.check_showpass.Size = new System.Drawing.Size(95, 17);
+            this.check_showpass.TabIndex = 4;
+            this.check_showpass.Text = "Hiện mật khẩu";
+            this.check_showpass.UseVisualStyleBackColor = true;
+            this.check_showpass.CheckedChanged += new System.EventHandler(this.check_showpass_CheckedChanged);
             // 
             // label2
             // 
@@ -110,27 +111,27 @@
             this.tbox_pass.Size = new System.Drawing.Size(204, 26);
             this.tbox_pass.TabIndex = 1;
             // 
-            // button1
+            // btn_login
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(162, 199);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 29);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Đăng Nhập";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_login.Location = new System.Drawing.Point(162, 199);
+            this.btn_login.Name = "btn_login";
+            this.btn_login.Size = new System.Drawing.Size(95, 29);
+            this.btn_login.TabIndex = 2;
+            this.btn_login.Text = "Đăng Nhập";
+            this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
-            // linkLabel2
+            // link_register
             // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel2.Location = new System.Drawing.Point(178, 237);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(62, 18);
-            this.linkLabel2.TabIndex = 6;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Đăng ký";
+            this.link_register.AutoSize = true;
+            this.link_register.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.link_register.Location = new System.Drawing.Point(178, 237);
+            this.link_register.Name = "link_register";
+            this.link_register.Size = new System.Drawing.Size(62, 18);
+            this.link_register.TabIndex = 6;
+            this.link_register.TabStop = true;
+            this.link_register.Text = "Đăng ký";
             // 
             // label3
             // 
@@ -148,11 +149,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 283);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.linkLabel2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.link_register);
+            this.Controls.Add(this.btn_login);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "frm_Login";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập / Đăng ký";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -165,13 +167,13 @@
 
         private System.Windows.Forms.TextBox tbox_userName;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.LinkLabel link_fogotPass;
+        private System.Windows.Forms.CheckBox check_showpass;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbox_pass;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Button btn_login;
+        private System.Windows.Forms.LinkLabel link_register;
         private System.Windows.Forms.Label label3;
     }
 }

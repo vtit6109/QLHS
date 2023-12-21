@@ -1,4 +1,4 @@
-﻿namespace QLHS.FormFiles
+﻿namespace QLHS.Views
 {
     partial class frm_ChangePassword
     {

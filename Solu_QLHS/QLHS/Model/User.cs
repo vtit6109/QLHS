@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLHS.Model
 {
-    class User
+    public class User
     {
         public string tenTK { get; set; }
         public string matKhau { get; set; }

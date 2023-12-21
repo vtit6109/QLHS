@@ -46,23 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Connection.cs" />
     <Compile Include="DataAccess\UserControl.cs" />
-    <Compile Include="FormFiles\frm_ChangePassword.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frm_ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFiles\frm_ChangePassword.Designer.cs">
+    <Compile Include="Views\frm_ChangePassword.Designer.cs">
       <DependentUpon>frm_ChangePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormFiles\frm_Control.cs">
+    <Compile Include="Views\frm_Control.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFiles\frm_Control.Designer.cs">
+    <Compile Include="Views\frm_Control.Designer.cs">
       <DependentUpon>frm_Control.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormFiles\frm_Login.cs">
+    <Compile Include="Views\frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFiles\frm_Login.Designer.cs">
+    <Compile Include="Views\frm_Login.Designer.cs">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_Main.cs">
@@ -74,10 +80,10 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormFiles\frm_Control.resx">
+    <EmbeddedResource Include="Views\frm_Control.resx">
       <DependentUpon>frm_Control.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormFiles\frm_Login.resx">
+    <EmbeddedResource Include="Views\frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Main.resx">
@@ -85,14 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -106,9 +107,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Resources\KENSTONE-LOGO-1.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
