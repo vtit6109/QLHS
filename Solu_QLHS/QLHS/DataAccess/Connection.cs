@@ -1,25 +1,31 @@
 ﻿using System;
-using System.Data.SqlClient;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Data;
+using QLHS.Model;
+using QLHS.DataAccess;
 
 namespace QLHS.DataAccess
 {
     public class Connection
     {
-        private string _connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=QLHS;Integrated Security=True";
-        private SqlConnection _sqlConnection;
+        private static string _connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=QLHS;Integrated Security=True";
 
-        public SqlConnection SqlConnection
-        {
-            get { return _sqlConnection; }
-        }
+        public SqlConnection SqlConnection { get; private set; } //tạo một thuộc tính SqlConnection có thể truy cập được từ bên ngoài lớp (do từ khóa public), nhưng chỉ có thể được gán giá trị từ bên trong lớp (do từ khóa private)
 
         public void Connect()
         {
             try
             {
-                _sqlConnection = new SqlConnection(_connectionString);
-                _sqlConnection.Open();
+                if (SqlConnection == null || SqlConnection.State == ConnectionState.Closed)
+                {
+                    SqlConnection = new SqlConnection(_connectionString);
+                    SqlConnection.Open();
+                }
             }
             catch (Exception)
             {
@@ -31,8 +37,10 @@ namespace QLHS.DataAccess
         {
             try
             {
-                _sqlConnection.Close();
-                MessageBox.Show("Đã ngắt kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (SqlConnection != null && SqlConnection.State == ConnectionState.Open)
+                {
+                    SqlConnection.Close();
+                }
             }
             catch (Exception)
             {

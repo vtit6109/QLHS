@@ -10,7 +10,7 @@ using QLHS.DataAccess;
 
 namespace QLHS.DataAccess
 {
-    class UserControl
+    public class UserControl
     {
         Connection connection = new Connection();
         public User GetUser(string tentk)
@@ -36,6 +36,23 @@ namespace QLHS.DataAccess
                 }
             }
             return user;
+        }
+        public bool ChangePassword(string tentk, string newPassword)
+        {
+            bool result = false;
+            connection.Connect();
+
+            using (SqlCommand command = new SqlCommand("UPDATE TaiKhoan SET matKhau = @newPassword WHERE tenTK = @tenTK", connection.SqlConnection))
+            {
+                command.Parameters.AddWithValue("@tenTK", tentk);
+                command.Parameters.AddWithValue("@newPassword", newPassword);
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            return result;
         }
     }
 }

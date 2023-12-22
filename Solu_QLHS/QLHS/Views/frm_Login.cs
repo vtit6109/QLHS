@@ -51,11 +51,6 @@ namespace QLHS.Views
             }
         }
 
-        private void link_changePass_LinkClick(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // Xử lý sự kiện click vào link thay đổi mật khẩu
-        }
-
         private void check_showpass_CheckedChanged(object sender, EventArgs e)
         {
             tbox_pass.UseSystemPasswordChar = !check_showpass.Checked; // sự kiện showpassword

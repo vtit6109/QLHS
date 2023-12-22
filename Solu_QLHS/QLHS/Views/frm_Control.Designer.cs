@@ -29,9 +29,17 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tùyChọnToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.case_info = new System.Windows.Forms.ToolStripMenuItem();
+            this.case_changepass = new System.Windows.Forms.ToolStripMenuItem();
+            this.case_closeform = new System.Windows.Forms.ToolStripMenuItem();
+            this.danhMụcToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.case_student = new System.Windows.Forms.ToolStripMenuItem();
+            this.case_faculty = new System.Windows.Forms.ToolStripMenuItem();
+            this.case_class = new System.Windows.Forms.ToolStripMenuItem();
+            this.case_subject = new System.Windows.Forms.ToolStripMenuItem();
+            this.case_score = new System.Windows.Forms.ToolStripMenuItem();
             this.tùyChọnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.case_changePass = new System.Windows.Forms.ToolStripMenuItem();
-            this.case_thoat = new System.Windows.Forms.ToolStripMenuItem();
             this.danhMụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhSáchHọcSinhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhSáchLớpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,11 +58,91 @@
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tùyChọnToolStripMenuItem1,
+            this.danhMụcToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tùyChọnToolStripMenuItem1
+            // 
+            this.tùyChọnToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.case_info,
+            this.case_changepass,
+            this.case_closeform});
+            this.tùyChọnToolStripMenuItem1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tùyChọnToolStripMenuItem1.Name = "tùyChọnToolStripMenuItem1";
+            this.tùyChọnToolStripMenuItem1.Size = new System.Drawing.Size(77, 23);
+            this.tùyChọnToolStripMenuItem1.Text = "Tùy chọn";
+            // 
+            // case_info
+            // 
+            this.case_info.Name = "case_info";
+            this.case_info.Size = new System.Drawing.Size(193, 24);
+            this.case_info.Text = "Thông tin tài khoản";
+            // 
+            // case_changepass
+            // 
+            this.case_changepass.Name = "case_changepass";
+            this.case_changepass.Size = new System.Drawing.Size(193, 24);
+            this.case_changepass.Text = "Đổi mật khẩu";
+            this.case_changepass.Click += new System.EventHandler(this.case_changepass_Click);
+            // 
+            // case_closeform
+            // 
+            this.case_closeform.Name = "case_closeform";
+            this.case_closeform.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.case_closeform.ShowShortcutKeys = false;
+            this.case_closeform.Size = new System.Drawing.Size(193, 24);
+            this.case_closeform.Text = "Thoát";
+            this.case_closeform.Click += new System.EventHandler(this.case_closeform_Click);
+            // 
+            // danhMụcToolStripMenuItem1
+            // 
+            this.danhMụcToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.case_student,
+            this.case_faculty,
+            this.case_class,
+            this.case_subject,
+            this.case_score});
+            this.danhMụcToolStripMenuItem1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.danhMụcToolStripMenuItem1.Name = "danhMụcToolStripMenuItem1";
+            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(82, 23);
+            this.danhMụcToolStripMenuItem1.Text = "Danh mục";
+            // 
+            // case_student
+            // 
+            this.case_student.Name = "case_student";
+            this.case_student.Size = new System.Drawing.Size(152, 24);
+            this.case_student.Text = "Sinh viên";
+            this.case_student.Click += new System.EventHandler(this.case_student_Click);
+            // 
+            // case_faculty
+            // 
+            this.case_faculty.Name = "case_faculty";
+            this.case_faculty.Size = new System.Drawing.Size(152, 24);
+            this.case_faculty.Text = "Khoa";
+            // 
+            // case_class
+            // 
+            this.case_class.Name = "case_class";
+            this.case_class.Size = new System.Drawing.Size(152, 24);
+            this.case_class.Text = "Lớp";
+            // 
+            // case_subject
+            // 
+            this.case_subject.Name = "case_subject";
+            this.case_subject.Size = new System.Drawing.Size(152, 24);
+            this.case_subject.Text = "Môn học";
+            // 
+            // case_score
+            // 
+            this.case_score.Name = "case_score";
+            this.case_score.Size = new System.Drawing.Size(152, 24);
+            this.case_score.Text = "Điểm";
             // 
             // tùyChọnToolStripMenuItem
             // 
@@ -62,20 +150,6 @@
             this.tùyChọnToolStripMenuItem.Name = "tùyChọnToolStripMenuItem";
             this.tùyChọnToolStripMenuItem.Size = new System.Drawing.Size(77, 23);
             this.tùyChọnToolStripMenuItem.Text = "Tùy chọn";
-            // 
-            // case_changePass
-            // 
-            this.case_changePass.Name = "case_changePass";
-            this.case_changePass.Size = new System.Drawing.Size(159, 24);
-            this.case_changePass.Text = "Đổi mật khẩu";
-            // 
-            // case_thoat
-            // 
-            this.case_thoat.Name = "case_thoat";
-            this.case_thoat.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.case_thoat.ShowShortcutKeys = false;
-            this.case_thoat.Size = new System.Drawing.Size(159, 24);
-            this.case_thoat.Text = "Thoát";
             // 
             // danhMụcToolStripMenuItem
             // 
@@ -149,15 +223,12 @@
             // case_chagepassword
             // 
             this.case_chagepassword.Name = "case_chagepassword";
-            this.case_chagepassword.Size = new System.Drawing.Size(159, 24);
-            this.case_chagepassword.Text = "Đổi mật khẩu";
+            this.case_chagepassword.Size = new System.Drawing.Size(32, 19);
             // 
             // case_close
             // 
             this.case_close.Name = "case_close";
-            this.case_close.Size = new System.Drawing.Size(159, 24);
-            this.case_close.Text = "Thoát";
-            this.case_close.Click += new System.EventHandler(this.case_close_Click);
+            this.case_close.Size = new System.Drawing.Size(32, 19);
             // 
             // frm_Control
             // 
@@ -180,7 +251,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tùyChọnToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem case_changePass;
         private System.Windows.Forms.ToolStripMenuItem case_thoat;
         private System.Windows.Forms.ToolStripMenuItem danhMụcToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem danhSáchHọcSinhToolStripMenuItem;
@@ -194,5 +264,15 @@
         private System.Windows.Forms.ToolStripMenuItem case_chagepassword;
         private System.Windows.Forms.ToolStripMenuItem case_close;
         private System.Windows.Forms.ToolStripMenuItem danhMụcBảngToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tùyChọnToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem case_info;
+        private System.Windows.Forms.ToolStripMenuItem case_changepass;
+        private System.Windows.Forms.ToolStripMenuItem case_closeform;
+        private System.Windows.Forms.ToolStripMenuItem danhMụcToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem case_student;
+        private System.Windows.Forms.ToolStripMenuItem case_faculty;
+        private System.Windows.Forms.ToolStripMenuItem case_class;
+        private System.Windows.Forms.ToolStripMenuItem case_subject;
+        private System.Windows.Forms.ToolStripMenuItem case_score;
     }
 }

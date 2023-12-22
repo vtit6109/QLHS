@@ -17,6 +17,7 @@ namespace QLHS.Views
     public partial class frm_Control : Form
     {
         public User CurrentUser { get; set; }
+        //public string CurrentPassword { get; set; }
 
         Connection connection = new Connection();
 
@@ -34,10 +35,29 @@ namespace QLHS.Views
             }
         }
 
-        private void case_close_Click(object sender, EventArgs e)
+        private void case_closeform_Click(object sender, EventArgs e)
         {
             connection.Disconnect();
             this.Close();
+        }
+
+        private void case_changepass_Click(object sender, EventArgs e)
+        {
+            frm_ChangePassword frmChagePass = new frm_ChangePassword();
+            frmChagePass.MdiParent = this;
+
+            QLHS.DataAccess.UserControl userControl = new QLHS.DataAccess.UserControl();
+            User user = userControl.GetUser(CurrentUser.tenTK);
+
+            frmChagePass.CurrentUser = user;
+            frmChagePass.Show();
+        }
+
+        private void case_student_Click(object sender, EventArgs e)
+        {
+            frm_Student frmStudent = new frm_Student();
+            frmStudent.MdiParent = this;
+            frmStudent.Show();
         }
     }
 }
