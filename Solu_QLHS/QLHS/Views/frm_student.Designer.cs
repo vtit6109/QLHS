@@ -29,27 +29,262 @@
         private void InitializeComponent()
         {
             this.dgv_Student = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tbox_masv = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbox_tensv = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbox_ngaysinh = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_edit = new System.Windows.Forms.Button();
+            this.btn_del = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.btn_skip = new System.Windows.Forms.Button();
+            this.btn_close = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cb_malop = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Student)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_Student
             // 
             this.dgv_Student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Student.Location = new System.Drawing.Point(12, 22);
+            this.dgv_Student.Location = new System.Drawing.Point(31, 190);
             this.dgv_Student.Name = "dgv_Student";
-            this.dgv_Student.Size = new System.Drawing.Size(731, 405);
+            this.dgv_Student.Size = new System.Drawing.Size(719, 226);
             this.dgv_Student.TabIndex = 0;
+            this.dgv_Student.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Student_CellContentClick);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel6);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(32, 52);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(718, 132);
+            this.panel1.TabIndex = 1;
+            // 
+            // tbox_masv
+            // 
+            this.tbox_masv.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbox_masv.Location = new System.Drawing.Point(112, 4);
+            this.tbox_masv.Name = "tbox_masv";
+            this.tbox_masv.Size = new System.Drawing.Size(194, 26);
+            this.tbox_masv.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 19);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Mã Sinh Viên";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.tbox_masv);
+            this.panel2.Location = new System.Drawing.Point(16, 19);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(323, 33);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.tbox_tensv);
+            this.panel3.Location = new System.Drawing.Point(373, 19);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(323, 33);
+            this.panel3.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 19);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Tên Sinh Viên";
+            // 
+            // tbox_tensv
+            // 
+            this.tbox_tensv.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbox_tensv.Location = new System.Drawing.Point(112, 4);
+            this.tbox_tensv.Name = "tbox_tensv";
+            this.tbox_tensv.Size = new System.Drawing.Size(194, 26);
+            this.tbox_tensv.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.tbox_ngaysinh);
+            this.panel4.Location = new System.Drawing.Point(16, 78);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(323, 33);
+            this.panel4.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(15, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 19);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Ngày sinh";
+            // 
+            // tbox_ngaysinh
+            // 
+            this.tbox_ngaysinh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbox_ngaysinh.Location = new System.Drawing.Point(112, 4);
+            this.tbox_ngaysinh.Name = "tbox_ngaysinh";
+            this.tbox_ngaysinh.Size = new System.Drawing.Size(194, 26);
+            this.tbox_ngaysinh.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btn_close);
+            this.panel5.Controls.Add(this.btn_skip);
+            this.panel5.Controls.Add(this.btn_save);
+            this.panel5.Controls.Add(this.btn_del);
+            this.panel5.Controls.Add(this.btn_edit);
+            this.panel5.Controls.Add(this.btn_add);
+            this.panel5.Location = new System.Drawing.Point(106, 431);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(562, 54);
+            this.panel5.TabIndex = 2;
+            // 
+            // btn_add
+            // 
+            this.btn_add.Location = new System.Drawing.Point(18, 13);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_add.Size = new System.Drawing.Size(75, 29);
+            this.btn_add.TabIndex = 0;
+            this.btn_add.Text = "Thêm";
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // btn_edit
+            // 
+            this.btn_edit.Location = new System.Drawing.Point(109, 13);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_edit.Size = new System.Drawing.Size(75, 29);
+            this.btn_edit.TabIndex = 1;
+            this.btn_edit.Text = "Sửa";
+            this.btn_edit.UseVisualStyleBackColor = true;
+            // 
+            // btn_del
+            // 
+            this.btn_del.Location = new System.Drawing.Point(200, 13);
+            this.btn_del.Name = "btn_del";
+            this.btn_del.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_del.Size = new System.Drawing.Size(75, 29);
+            this.btn_del.TabIndex = 2;
+            this.btn_del.Text = "Xóa";
+            this.btn_del.UseVisualStyleBackColor = true;
+            // 
+            // btn_save
+            // 
+            this.btn_save.Location = new System.Drawing.Point(291, 13);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_save.Size = new System.Drawing.Size(75, 29);
+            this.btn_save.TabIndex = 3;
+            this.btn_save.Text = "Lưu";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
+            // btn_skip
+            // 
+            this.btn_skip.Location = new System.Drawing.Point(382, 13);
+            this.btn_skip.Name = "btn_skip";
+            this.btn_skip.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_skip.Size = new System.Drawing.Size(75, 29);
+            this.btn_skip.TabIndex = 4;
+            this.btn_skip.Text = "Bỏ qua";
+            this.btn_skip.UseVisualStyleBackColor = true;
+            // 
+            // btn_close
+            // 
+            this.btn_close.Location = new System.Drawing.Point(473, 13);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_close.Size = new System.Drawing.Size(75, 29);
+            this.btn_close.TabIndex = 5;
+            this.btn_close.Text = "Đóng";
+            this.btn_close.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.cb_malop);
+            this.panel6.Controls.Add(this.label4);
+            this.panel6.Location = new System.Drawing.Point(373, 78);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(323, 33);
+            this.panel6.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(15, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 19);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Mã lớp";
+            // 
+            // cb_malop
+            // 
+            this.cb_malop.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_malop.FormattingEnabled = true;
+            this.cb_malop.Location = new System.Drawing.Point(112, 3);
+            this.cb_malop.Name = "cb_malop";
+            this.cb_malop.Size = new System.Drawing.Size(194, 27);
+            this.cb_malop.TabIndex = 2;
             // 
             // frm_Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 453);
+            this.ClientSize = new System.Drawing.Size(781, 519);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgv_Student);
+            this.MaximizeBox = false;
             this.Name = "frm_Student";
-            this.Text = "frm_student";
+            this.Text = "Sinh Viên";
             this.Load += new System.EventHandler(this.frm_Student_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Student)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -57,5 +292,25 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_Student;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbox_ngaysinh;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbox_tensv;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbox_masv;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.Button btn_close;
+        private System.Windows.Forms.Button btn_skip;
+        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btn_del;
+        private System.Windows.Forms.Button btn_edit;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cb_malop;
     }
 }
