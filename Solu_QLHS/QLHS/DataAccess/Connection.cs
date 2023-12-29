@@ -15,7 +15,7 @@ namespace QLHS.DataAccess
     {
         private static string _connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=QLHS;Integrated Security=True";
 
-        public SqlConnection SqlConnection { get; private set; } //tạo một thuộc tính SqlConnection có thể truy cập được từ bên ngoài lớp (do từ khóa public), nhưng chỉ có thể được gán giá trị từ bên trong lớp (do từ khóa private)
+        public static SqlConnection SqlConnection = new SqlConnection();
 
         public void Connect()
         {

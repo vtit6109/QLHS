@@ -18,7 +18,7 @@ namespace QLHS.DataAccess
             User user = null;
             connection.Connect();
 
-            using (SqlCommand command = new SqlCommand("select * from TaiKhoan WHERE tenTK = @tenTK", connection.SqlConnection))
+            using (SqlCommand command = new SqlCommand("select * from TaiKhoan WHERE tenTK = @tenTK", DataAccess.Connection.SqlConnection))
             {
                 command.Parameters.AddWithValue("@tenTK", tentk);
 
@@ -42,7 +42,7 @@ namespace QLHS.DataAccess
             bool result = false;
             connection.Connect();
 
-            using (SqlCommand command = new SqlCommand("UPDATE TaiKhoan SET matKhau = @newPassword WHERE tenTK = @tenTK", connection.SqlConnection))
+            using (SqlCommand command = new SqlCommand("UPDATE TaiKhoan SET matKhau = @newPassword WHERE tenTK = @tenTK", DataAccess.Connection.SqlConnection))
             {
                 command.Parameters.AddWithValue("@tenTK", tentk);
                 command.Parameters.AddWithValue("@newPassword", newPassword);
