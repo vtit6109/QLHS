@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataGridViewAutoFilter; // thư viện filter 
+
 using System.Windows.Forms;
 using QLHS.DataAccess;
 
@@ -15,6 +17,8 @@ namespace QLHS.Views
     public partial class frm_Student : Form
     {
         DataTable tblStudent;
+        private BindingSource bindingSource = new BindingSource();
+
         public frm_Student()
         {
             InitializeComponent();
@@ -37,7 +41,19 @@ namespace QLHS.Views
             string sql;
             sql = "SELECT maSV, hoTen, ngaySinh, maLop FROM SinhVien";
             tblStudent = DataAccess.BaseAccess.GetDataToTable(sql);
-            dgv_Student.DataSource = tblStudent;
+
+            // Liên kết BindingSource với dữ liệu
+            bindingSource.DataSource = tblStudent;
+
+            // Thiết lập BindingSource làm DataSource cho DataGridView
+            dgv_Student.DataSource = bindingSource;
+
+            // Sử dụng DataGridViewAutoFilterColumnHeaderCell cho các cột của DataGridView
+            foreach (DataGridViewColumn column in dgv_Student.Columns)
+            {
+                column.HeaderCell = new DataGridViewAutoFilterColumnHeaderCell(column.HeaderCell);
+            }
+
             dgv_Student.Columns[0].HeaderText = "Mã Sinh Viên";
             dgv_Student.Columns[1].HeaderText = "Họ và Tên";
             dgv_Student.Columns[2].HeaderText = "Ngày Sinh";
@@ -229,7 +245,7 @@ namespace QLHS.Views
             string sql;
             sql = "SELECT* FROM SinhVien";
             tblStudent = DataAccess.BaseAccess.GetDataToTable(sql);
-            dgv_Student.DataSource = tblStudent;
+            bindingSource.DataSource = tblStudent;
         }
 
 
@@ -241,26 +257,34 @@ namespace QLHS.Views
         private void btn_search_Click(object sender, EventArgs e)
         {
             string sql;
-            if ((tbox_masv.Text == "") && (tbox_tensv.Text == "") && (cb_malop.Text == ""))
+            if (tbox_search.Text == "")
             {
                 MessageBox.Show("Bạn hãy nhập điều kiện tìm kiếm", "Thông báo",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            sql = "SELECT * from SinhVien WHERE 1=1";
-            if (tbox_masv.Text != "")
-                sql += " AND maSV LIKE N'%" + tbox_masv.Text + "%'";
-            if (tbox_tensv.Text != "")
-                sql += " AND hoTen LIKE N'%" + tbox_tensv.Text + "%'";
-            if (cb_malop.Text != "")
-                sql += " AND maLop LIKE N'%" + cb_malop.SelectedValue + "%'";
+            sql = "SELECT * FROM SinhVien WHERE maSV LIKE N'%" + tbox_search.Text + "%' OR hoTen LIKE N'%" + tbox_search.Text + "%' OR maLop LIKE N'%" + tbox_search.Text + "%'";
             tblStudent = BaseAccess.GetDataToTable(sql);
             if (tblStudent.Rows.Count == 0)
-                MessageBox.Show("Không có bản ghi thoả mãn điều kiện tìm kiếm!", "Thôngbáo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else MessageBox.Show("Có " + tblStudent.Rows.Count + "  bản ghi thoả mãn điều kiện!",
+                MessageBox.Show("Không có bản ghi thoả mãn điều kiện tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Có " + tblStudent.Rows.Count + " kết quả tìm kiếm!",
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            dgv_Student.DataSource = tblStudent;
+            // Liên kết BindingSource với dữ liệu
+            bindingSource.DataSource = tblStudent;
             ResetValues();
         }
+
+        private void tbox_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Ngăn chặn tiếng bíp khi nhấn Enter
+                e.SuppressKeyPress = true;
+
+                // Gọi phương thức tìm kiếm
+                btn_search_Click(sender, e);
+            }
+        }
+
     }
 }

@@ -20,7 +20,7 @@ namespace QLHS.Views
             InitializeComponent();
             tbox_oldpass.UseSystemPasswordChar = true;
             tbox_newpass.UseSystemPasswordChar = true;
-            tbox_oldpass.UseSystemPasswordChar = true;
+            tbox_confirmpass.UseSystemPasswordChar = true;
         }
 
         private void btn_confirm_Click(object sender, EventArgs e)

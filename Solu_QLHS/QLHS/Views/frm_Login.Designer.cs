@@ -48,6 +48,7 @@
             this.tbox_userName.Name = "tbox_userName";
             this.tbox_userName.Size = new System.Drawing.Size(204, 26);
             this.tbox_userName.TabIndex = 0;
+            this.tbox_userName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbox_userName_KeyDown);
             // 
             // panel1
             // 
@@ -110,6 +111,7 @@
             this.tbox_pass.Name = "tbox_pass";
             this.tbox_pass.Size = new System.Drawing.Size(204, 26);
             this.tbox_pass.TabIndex = 1;
+            this.tbox_pass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbox_pass_KeyDown);
             // 
             // btn_login
             // 

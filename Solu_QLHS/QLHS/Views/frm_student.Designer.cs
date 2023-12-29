@@ -45,13 +45,15 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
             this.btn_skip = new System.Windows.Forms.Button();
+            this.btn_edit = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_del = new System.Windows.Forms.Button();
-            this.btn_edit = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.btn_search = new System.Windows.Forms.Button();
+            this.tbox_search = new System.Windows.Forms.TextBox();
             this.btn_show = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Student)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -60,33 +62,35 @@
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_Student
             // 
             this.dgv_Student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Student.Location = new System.Drawing.Point(31, 190);
+            this.dgv_Student.Location = new System.Drawing.Point(18, 180);
             this.dgv_Student.Name = "dgv_Student";
-            this.dgv_Student.Size = new System.Drawing.Size(719, 226);
+            this.dgv_Student.Size = new System.Drawing.Size(724, 313);
             this.dgv_Student.TabIndex = 0;
             this.dgv_Student.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Student_CellContentClick);
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(32, 52);
+            this.panel1.Location = new System.Drawing.Point(18, 75);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(718, 132);
+            this.panel1.Size = new System.Drawing.Size(724, 99);
             this.panel1.TabIndex = 1;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.cb_malop);
             this.panel6.Controls.Add(this.label4);
-            this.panel6.Location = new System.Drawing.Point(373, 78);
+            this.panel6.Location = new System.Drawing.Point(373, 52);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(323, 33);
             this.panel6.TabIndex = 5;
@@ -114,7 +118,7 @@
             // 
             this.panel4.Controls.Add(this.datePick_birthDay);
             this.panel4.Controls.Add(this.label3);
-            this.panel4.Location = new System.Drawing.Point(16, 78);
+            this.panel4.Location = new System.Drawing.Point(16, 52);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(323, 33);
             this.panel4.TabIndex = 4;
@@ -143,7 +147,7 @@
             // 
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.tbox_tensv);
-            this.panel3.Location = new System.Drawing.Point(373, 19);
+            this.panel3.Location = new System.Drawing.Point(373, 8);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(323, 33);
             this.panel3.TabIndex = 3;
@@ -170,7 +174,7 @@
             // 
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.tbox_masv);
-            this.panel2.Location = new System.Drawing.Point(16, 19);
+            this.panel2.Location = new System.Drawing.Point(16, 8);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(323, 33);
             this.panel2.TabIndex = 2;
@@ -195,20 +199,21 @@
             // 
             // panel5
             // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.btn_close);
             this.panel5.Controls.Add(this.btn_skip);
+            this.panel5.Controls.Add(this.btn_edit);
             this.panel5.Controls.Add(this.btn_save);
             this.panel5.Controls.Add(this.btn_del);
-            this.panel5.Controls.Add(this.btn_edit);
             this.panel5.Controls.Add(this.btn_add);
-            this.panel5.Location = new System.Drawing.Point(106, 431);
+            this.panel5.Location = new System.Drawing.Point(36, 12);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(562, 54);
+            this.panel5.Size = new System.Drawing.Size(761, 54);
             this.panel5.TabIndex = 2;
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(473, 13);
+            this.btn_close.Location = new System.Drawing.Point(667, 13);
             this.btn_close.Name = "btn_close";
             this.btn_close.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_close.Size = new System.Drawing.Size(75, 29);
@@ -219,7 +224,7 @@
             // 
             // btn_skip
             // 
-            this.btn_skip.Location = new System.Drawing.Point(382, 13);
+            this.btn_skip.Location = new System.Drawing.Point(295, 13);
             this.btn_skip.Name = "btn_skip";
             this.btn_skip.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_skip.Size = new System.Drawing.Size(75, 29);
@@ -228,9 +233,20 @@
             this.btn_skip.UseVisualStyleBackColor = true;
             this.btn_skip.Click += new System.EventHandler(this.btn_skip_Click);
             // 
+            // btn_edit
+            // 
+            this.btn_edit.Location = new System.Drawing.Point(97, 13);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_edit.Size = new System.Drawing.Size(75, 29);
+            this.btn_edit.TabIndex = 1;
+            this.btn_edit.Text = "Sửa";
+            this.btn_edit.UseVisualStyleBackColor = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
+            // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(291, 13);
+            this.btn_save.Location = new System.Drawing.Point(178, 13);
             this.btn_save.Name = "btn_save";
             this.btn_save.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_save.Size = new System.Drawing.Size(75, 29);
@@ -241,7 +257,7 @@
             // 
             // btn_del
             // 
-            this.btn_del.Location = new System.Drawing.Point(200, 13);
+            this.btn_del.Location = new System.Drawing.Point(376, 13);
             this.btn_del.Name = "btn_del";
             this.btn_del.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_del.Size = new System.Drawing.Size(75, 29);
@@ -250,20 +266,9 @@
             this.btn_del.UseVisualStyleBackColor = true;
             this.btn_del.Click += new System.EventHandler(this.btn_del_Click);
             // 
-            // btn_edit
-            // 
-            this.btn_edit.Location = new System.Drawing.Point(109, 13);
-            this.btn_edit.Name = "btn_edit";
-            this.btn_edit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_edit.Size = new System.Drawing.Size(75, 29);
-            this.btn_edit.TabIndex = 1;
-            this.btn_edit.Text = "Sửa";
-            this.btn_edit.UseVisualStyleBackColor = true;
-            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
-            // 
             // btn_add
             // 
-            this.btn_add.Location = new System.Drawing.Point(18, 13);
+            this.btn_add.Location = new System.Drawing.Point(16, 13);
             this.btn_add.Name = "btn_add";
             this.btn_add.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_add.Size = new System.Drawing.Size(75, 29);
@@ -274,27 +279,27 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.btn_search);
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.tbox_search);
             this.panel7.Controls.Add(this.btn_show);
-            this.panel7.Location = new System.Drawing.Point(106, 491);
+            this.panel7.Controls.Add(this.btn_search);
+            this.panel7.Location = new System.Drawing.Point(18, 15);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(562, 54);
+            this.panel7.Size = new System.Drawing.Size(724, 54);
             this.panel7.TabIndex = 3;
             // 
-            // btn_search
+            // tbox_search
             // 
-            this.btn_search.Location = new System.Drawing.Point(291, 13);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_search.Size = new System.Drawing.Size(75, 29);
-            this.btn_search.TabIndex = 3;
-            this.btn_search.Text = "Tìm kiếm";
-            this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
+            this.tbox_search.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbox_search.Location = new System.Drawing.Point(67, 13);
+            this.tbox_search.Name = "tbox_search";
+            this.tbox_search.Size = new System.Drawing.Size(371, 26);
+            this.tbox_search.TabIndex = 4;
+            this.tbox_search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbox_search_KeyDown);
             // 
             // btn_show
             // 
-            this.btn_show.Location = new System.Drawing.Point(182, 13);
+            this.btn_show.Location = new System.Drawing.Point(525, 13);
             this.btn_show.Name = "btn_show";
             this.btn_show.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_show.Size = new System.Drawing.Size(93, 29);
@@ -303,15 +308,35 @@
             this.btn_show.UseVisualStyleBackColor = true;
             this.btn_show.Click += new System.EventHandler(this.btn_show_Click);
             // 
+            // btn_search
+            // 
+            this.btn_search.Location = new System.Drawing.Point(444, 13);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_search.Size = new System.Drawing.Size(75, 29);
+            this.btn_search.TabIndex = 3;
+            this.btn_search.Text = "Tìm kiếm";
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.panel7);
+            this.panel8.Controls.Add(this.panel1);
+            this.panel8.Controls.Add(this.dgv_Student);
+            this.panel8.Location = new System.Drawing.Point(36, 72);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(761, 509);
+            this.panel8.TabIndex = 4;
+            // 
             // frm_Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 555);
-            this.Controls.Add(this.panel7);
+            this.ClientSize = new System.Drawing.Size(837, 593);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgv_Student);
             this.MaximizeBox = false;
             this.Name = "frm_Student";
             this.Text = "Sinh Viên";
@@ -328,6 +353,8 @@
             this.panel2.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -358,5 +385,7 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.Button btn_show;
+        private System.Windows.Forms.TextBox tbox_search;
+        private System.Windows.Forms.Panel panel8;
     }
 }

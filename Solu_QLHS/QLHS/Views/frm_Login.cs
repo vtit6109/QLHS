@@ -55,5 +55,33 @@ namespace QLHS.Views
         {
             tbox_pass.UseSystemPasswordChar = !check_showpass.Checked; // sự kiện showpassword
         }
+
+        private void tbox_userName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Ngăn chặn tiếng bíp khi nhấn Enter
+                e.SuppressKeyPress = true;
+                if (tbox_pass.Text == "")
+                {
+                    MessageBox.Show("Vui lòng điền mật khẩu !", "Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return;
+                }
+                // Gọi phương thức đăng nhập
+                btn_login_Click(sender, e);
+            }
+        }
+
+        private void tbox_pass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Ngăn chặn tiếng bíp khi nhấn Enter
+                e.SuppressKeyPress = true;
+
+                // Gọi phương thức đăng nhập
+                btn_login_Click(sender, e);
+            }
+        }
     }
 }
