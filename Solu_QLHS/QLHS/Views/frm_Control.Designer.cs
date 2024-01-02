@@ -125,6 +125,7 @@
             this.case_faculty.Name = "case_faculty";
             this.case_faculty.Size = new System.Drawing.Size(152, 24);
             this.case_faculty.Text = "Khoa";
+            this.case_faculty.Click += new System.EventHandler(this.case_faculty_Click);
             // 
             // case_class
             // 

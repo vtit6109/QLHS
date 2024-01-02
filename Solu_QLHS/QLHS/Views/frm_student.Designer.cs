@@ -54,6 +54,7 @@
             this.btn_show = new System.Windows.Forms.Button();
             this.btn_search = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.btn_exportExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Student)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -200,6 +201,7 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.btn_exportExcel);
             this.panel5.Controls.Add(this.btn_close);
             this.panel5.Controls.Add(this.btn_skip);
             this.panel5.Controls.Add(this.btn_edit);
@@ -330,6 +332,17 @@
             this.panel8.Size = new System.Drawing.Size(761, 509);
             this.panel8.TabIndex = 4;
             // 
+            // btn_exportExcel
+            // 
+            this.btn_exportExcel.Location = new System.Drawing.Point(544, 13);
+            this.btn_exportExcel.Name = "btn_exportExcel";
+            this.btn_exportExcel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_exportExcel.Size = new System.Drawing.Size(75, 29);
+            this.btn_exportExcel.TabIndex = 6;
+            this.btn_exportExcel.Text = "Xuất Excel";
+            this.btn_exportExcel.UseVisualStyleBackColor = true;
+            this.btn_exportExcel.Click += new System.EventHandler(this.btn_exportExcel_Click);
+            // 
             // frm_Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,5 +400,6 @@
         private System.Windows.Forms.Button btn_show;
         private System.Windows.Forms.TextBox tbox_search;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button btn_exportExcel;
     }
 }

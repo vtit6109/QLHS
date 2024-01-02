@@ -19,7 +19,15 @@ namespace QLHS
             InitializeComponent();
             link_github.Links.Add(0, link_github.Text.Length, "https://github.com/vtit6109");
             link_project.Links.Add(0, link_project.Text.Length, "https://github.com/vtit6109/QLHS");
-            connection.Connect();
+            try
+            {
+                connection.Connect();
+            }
+            catch
+            {
+                connection.Disconnect();
+                this.Close();
+            }
 
         }
         private void link_github_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
