@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QLHS.Views;
 using QLHS.DataAccess;
+
 namespace QLHS
 {
     public partial class frm_Main : Form

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using QLHS.Model;
 using QLHS.DataAccess;
 using QLHS.Views;
+using QLHS.Controllers;
 
 namespace QLHS.Views
 {
@@ -46,7 +47,7 @@ namespace QLHS.Views
             frm_ChangePassword frmChagePass = new frm_ChangePassword();
             frmChagePass.MdiParent = this;
 
-            QLHS.DataAccess.UserControl userControl = new QLHS.DataAccess.UserControl();
+            QLHS.Controllers.UserControl userControl = new QLHS.Controllers.UserControl();
             User user = userControl.GetUser(CurrentUser.tenTK);
 
             frmChagePass.CurrentUser = user;

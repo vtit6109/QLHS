@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using QLHS.Model;
 using QLHS.DataAccess;
 
-namespace QLHS.DataAccess
+namespace QLHS.Controllers
 {
     public class UserControl
     {

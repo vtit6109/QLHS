@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using QLHS.DataAccess;
 using QLHS.Model;
 using QLHS.Views;
+using QLHS.Controllers;
 
 namespace QLHS.Views
 {
@@ -35,7 +36,7 @@ namespace QLHS.Views
             string id = tbox_userName.Text;
             string pass = tbox_pass.Text;
 
-            QLHS.DataAccess.UserControl userControl = new QLHS.DataAccess.UserControl();
+            QLHS.Controllers.UserControl userControl = new QLHS.Controllers.UserControl();
             User user = userControl.GetUser(id);
 
             if (user != null && user.matKhau == pass)

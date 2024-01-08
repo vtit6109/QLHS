@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using QLHS.DataAccess;
 namespace QLHS.DataAccess
 {
-    class BaseAccess
+    public class BaseAccess
     {
         public static DataTable GetDataToTable(string sql)
         {

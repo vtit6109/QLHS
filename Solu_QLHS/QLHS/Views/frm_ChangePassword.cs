@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QLHS.Model;
 using QLHS.DataAccess;
+using QLHS.Controllers;
 namespace QLHS.Views
 {
     public partial class frm_ChangePassword : Form
@@ -41,7 +42,7 @@ namespace QLHS.Views
                 return;
             }
 
-            QLHS.DataAccess.UserControl userControl = new QLHS.DataAccess.UserControl();
+            QLHS.Controllers.UserControl userControl = new QLHS.Controllers.UserControl();
 
             if (userControl.ChangePassword(CurrentUser.tenTK, newPassword))
             {

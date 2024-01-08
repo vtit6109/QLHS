@@ -12,13 +12,15 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 using System.Windows.Forms;
 using QLHS.DataAccess;
-
+using QLHS.Controllers;
+using QLHS.Model;
 namespace QLHS.Views
 {
     public partial class frm_Faculty : Form
     {
-        DataTable tblFaculty;
+
         private BindingSource bindingSource = new BindingSource();
+        FacultyControl facultyControl = new FacultyControl();
         public frm_Faculty()
         {
             InitializeComponent();
@@ -26,7 +28,6 @@ namespace QLHS.Views
 
         private void frm_Faculty_Load(object sender, EventArgs e)
         {
-            string sql;
             tbox_makhoa.Enabled = false;
             btn_save.Enabled = false;
             btn_skip.Enabled = false;
@@ -35,12 +36,11 @@ namespace QLHS.Views
         }
         private void LoadDataGridView()
         {
-            string sql;
-            sql = "SELECT * FROM Khoa";
-            tblFaculty = DataAccess.BaseAccess.GetDataToTable(sql);
+            // Sử dụng phương thức GetFaculties từ lớp FacultyControl
+            DataTable faculties = facultyControl.GetFaculties();
 
             // Liên kết BindingSource với dữ liệu
-            bindingSource.DataSource = tblFaculty;
+            bindingSource.DataSource = faculties;
             dgv_Faculty.DataSource = bindingSource;
             foreach (DataGridViewColumn column in dgv_Faculty.Columns)
             {
@@ -56,35 +56,30 @@ namespace QLHS.Views
             // Đặt thuộc tính AutoSizeColumnsMode
             dgv_Faculty.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
-        private void ResetValues()
-        {
-            tbox_makhoa.Text = "";
-            tbox_tenkhoa.Text = "";
-        }
+
+     
 
         private void dgv_Faculty_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string MaKhoa;
-            string sql;
-            if (btn_add.Enabled == false)
+            string maKhoa = dgv_Faculty.CurrentRow.Cells["maKhoa"].Value.ToString();
+            Faculty faculty = facultyControl.GetFacultyByMaKhoa(maKhoa);
+
+            if (faculty != null)
             {
-                MessageBox.Show("Đang ở chế độ thêm mới !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbox_makhoa.Focus();
-                return;
-            }
-            if (tblFaculty.Rows.Count == 0)
-            {
-                MessageBox.Show("Không có dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                tbox_makhoa.Text = faculty.maKhoa;
+                tbox_tenkhoa.Text = faculty.tenKhoa;
             }
 
-            tbox_makhoa.Text = dgv_Faculty.CurrentRow.Cells["maKhoa"].Value.ToString();
-            tbox_tenkhoa.Text = dgv_Faculty.CurrentRow.Cells["tenKhoa"].Value.ToString();
             btn_edit.Enabled = true;
             btn_del.Enabled = true;
             btn_skip.Enabled = true;
         }
-
+        private void ResetValues()
+        {
+            Faculty emptyFaculty = facultyControl.GetEmptyFaculty();
+            tbox_makhoa.Text = emptyFaculty.maKhoa;
+            tbox_tenkhoa.Text = emptyFaculty.tenKhoa;
+        }
         private void btn_add_Click(object sender, EventArgs e)
         {
             btn_edit.Enabled = false;
@@ -99,32 +94,17 @@ namespace QLHS.Views
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            string sql;
-            if (tbox_makhoa.Text.Trim().Length == 0)
+            Faculty faculty = new Faculty()
             {
-                MessageBox.Show("Bạn phải nhập mã sinh viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbox_makhoa.Focus();
-                return;
-            }
-            if (tbox_tenkhoa.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn phải nhập tên sinh viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbox_tenkhoa.Focus();
-                return;
-            }
-            sql = "SELECT maKhoa FROM Khoa WHERE maKhoa=N'" + tbox_makhoa.Text.Trim() + "'";
+                maKhoa = tbox_makhoa.Text,
+                tenKhoa = tbox_tenkhoa.Text
+            };
 
-            if (BaseAccess.CheckKey(sql))
-            {
-                MessageBox.Show("Mã sinh viên này đã có, Vui lòng nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                tbox_makhoa.Focus();
-                return;
-            }
-            sql = "INSERT INTO Khoa VALUES(N'" + tbox_makhoa.Text + "', N'" + tbox_tenkhoa.Text + "')";
-
-            BaseAccess.RunSQL(sql);
+            facultyControl.AddFaculty(faculty);
+            MessageBox.Show("Thêm mới thành công!");
             LoadDataGridView();
             ResetValues();
+
             btn_del.Enabled = true;
             btn_add.Enabled = true;
             btn_edit.Enabled = true;
@@ -135,31 +115,17 @@ namespace QLHS.Views
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            string sql;
-            if (tblFaculty.Rows.Count == 0)
+            Faculty faculty = new Faculty()
             {
-                MessageBox.Show("Không còn dữ liệu", "Thông báo", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-                return;
-            }
-            if (tbox_makhoa.Text == "")
-            {
-                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbox_makhoa.Focus();
-                return;
-            }
-            if (tbox_tenkhoa.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn phải nhập tên sinh viên", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbox_tenkhoa.Focus();
-                return;
-            }
-            sql = "UPDATE Khoa SET tenKhoa=N'" + tbox_tenkhoa.Text + "' WHERE maKhoa=N'" + tbox_makhoa.Text + "'";
-            BaseAccess.RunSQL(sql);
+                maKhoa = tbox_makhoa.Text,
+                tenKhoa = tbox_tenkhoa.Text
+            };
+
+            facultyControl.UpdateFaculty(faculty);
+            MessageBox.Show("Cập nhật thành công!");
             LoadDataGridView();
             ResetValues();
+
             btn_del.Enabled = true;
             btn_add.Enabled = true;
             btn_edit.Enabled = true;
@@ -170,8 +136,10 @@ namespace QLHS.Views
 
         private void btn_del_Click(object sender, EventArgs e)
         {
-            string sql;
-            if (tblFaculty.Rows.Count == 0)
+            DataTable faculties = facultyControl.GetFaculties();
+            bindingSource.DataSource = faculties;
+
+            if (faculties.Rows.Count == 0)
             {
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -186,8 +154,8 @@ namespace QLHS.Views
             if (MessageBox.Show("Bạn có muốn xoá bản ghi này không?", "Thông báo",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                sql = "DELETE Khoa WHERE maKhoa=N'" + tbox_makhoa.Text + "'";
-                BaseAccess.RunSqlDel(sql);
+                facultyControl.DeleteFaculty(tbox_makhoa.Text);
+                MessageBox.Show("Xóa thành công!");
                 LoadDataGridView();
                 ResetValues();
             }
@@ -206,10 +174,8 @@ namespace QLHS.Views
 
         private void btn_show_Click(object sender, EventArgs e)
         {
-            string sql;
-            sql = "SELECT* FROM SinhVien";
-            tblFaculty = DataAccess.BaseAccess.GetDataToTable(sql);
-            bindingSource.DataSource = tblFaculty;
+            DataTable students = facultyControl.GetAllStudents();
+            bindingSource.DataSource = students;
         }
 
         private void btn_close_Click(object sender, EventArgs e)
@@ -219,22 +185,24 @@ namespace QLHS.Views
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            string sql;
             if (tbox_search.Text == "")
             {
                 MessageBox.Show("Bạn hãy nhập điều kiện tìm kiếm", "Thông báo",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            sql = "SELECT * FROM Khoa WHERE maKhoa LIKE N'%" + tbox_search.Text + "%' OR maKhoa LIKE N'%" + tbox_search.Text + "%' OR tenKhoa LIKE N'%" + tbox_search.Text + "%'";
-            tblFaculty = BaseAccess.GetDataToTable(sql);
-            if (tblFaculty.Rows.Count == 0)
+
+            DataTable faculties = facultyControl.SearchFaculties(tbox_search.Text);
+            if (faculties.Rows.Count == 0)
+            {
                 MessageBox.Show("Không có bản ghi thoả mãn điều kiện tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else MessageBox.Show("Có " + tblFaculty.Rows.Count + " kết quả tìm kiếm!",
-                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // Liên kết BindingSource với dữ liệu
-            bindingSource.DataSource = tblFaculty;
-            ResetValues();
+            }
+            else
+            {
+                MessageBox.Show($"Có {faculties.Rows.Count} kết quả tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bindingSource.DataSource = faculties;
+                ResetValues();
+            }
         }
 
         private void tbox_search_KeyDown(object sender, KeyEventArgs e)

@@ -76,8 +76,9 @@
   <ItemGroup>
     <Compile Include="DataAccess\BaseAccess.cs" />
     <Compile Include="DataAccess\Connection.cs" />
-    <Compile Include="DataAccess\StudentControl.cs" />
-    <Compile Include="DataAccess\UserControl.cs" />
+    <Compile Include="Controllers\FacultyControl.cs" />
+    <Compile Include="Controllers\StudentControl.cs" />
+    <Compile Include="Controllers\UserControl.cs" />
     <Compile Include="Model\Class.cs" />
     <Compile Include="Model\Faculty.cs" />
     <Compile Include="Model\Score.cs" />

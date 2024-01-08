@@ -12,13 +12,14 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 using System.Windows.Forms;
 using QLHS.DataAccess;
-
+using QLHS.Controllers;
+using QLHS.Model;
 namespace QLHS.Views
 {
     public partial class frm_Student : Form
     {
-        DataTable tblStudent;
         private BindingSource bindingSource = new BindingSource();
+         StudentControl Students = new StudentControl();
 
         public frm_Student()
         {
@@ -30,35 +31,28 @@ namespace QLHS.Views
             tbox_masv.Enabled = false;
             btn_save.Enabled = false;
             btn_skip.Enabled = false;
-            LoadDataGirdView();
+            LoadDataGridView();
             sql = "SELECT * FROM Lop";
             BaseAccess.FillCombo(sql, "maLop", "tenLop", cb_malop);
             cb_malop.SelectedIndex = -1;
             ResetValues();
 
         }
-        private void LoadDataGirdView()
+        private void LoadDataGridView()
         {
-            string sql;
-            sql = "SELECT maSV, hoTen, ngaySinh, maLop FROM SinhVien";
-            tblStudent = DataAccess.BaseAccess.GetDataToTable(sql);
-
-            // Liên kết BindingSource với dữ liệu
-            bindingSource.DataSource = tblStudent;
-
-            // Thiết lập BindingSource làm DataSource cho DataGridView
+            DataTable students = Students.GetStudents();
+            bindingSource.DataSource = students;
             dgv_Student.DataSource = bindingSource;
-
-            // Sử dụng DataGridViewAutoFilterColumnHeaderCell cho các cột của DataGridView
             foreach (DataGridViewColumn column in dgv_Student.Columns)
             {
                 column.HeaderCell = new DataGridViewAutoFilterColumnHeaderCell(column.HeaderCell);
             }
 
             dgv_Student.Columns[0].HeaderText = "Mã Sinh Viên";
-            dgv_Student.Columns[1].HeaderText = "Họ và Tên";
-            dgv_Student.Columns[2].HeaderText = "Ngày Sinh";
+            dgv_Student.Columns[1].HeaderText = "Họ & Tên Sinh Viên";
+            dgv_Student.Columns[2].HeaderText = "Ngày Tháng Năm Sinh";
             dgv_Student.Columns[3].HeaderText = "Mã Lớp";
+
 
             dgv_Student.AllowUserToAddRows = false; // không cho người dùng thêm dữ liệu trực tiếp
             dgv_Student.EditMode = DataGridViewEditMode.EditProgrammatically;
@@ -69,36 +63,24 @@ namespace QLHS.Views
 
         private void dgv_Student_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string MaLop;
-            string sql;
-            if (btn_add.Enabled == false)
-            {
-                MessageBox.Show("Đang ở chế độ thêm mới !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbox_masv.Focus();
-                return;
-            }
-            if (tblStudent.Rows.Count == 0)
-            {
-                MessageBox.Show("Không có dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            string maSV = dgv_Student.CurrentRow.Cells["maSV"].Value.ToString();
+            Student student = Students.GetStudentByMaSV(maSV);
 
-            tbox_masv.Text = dgv_Student.CurrentRow.Cells["maSV"].Value.ToString();
-            tbox_tensv.Text = dgv_Student.CurrentRow.Cells["hoTen"].Value.ToString();
-            datePick_birthDay.Value = DateTime.Parse(dgv_Student.CurrentRow.Cells["ngaySinh"].Value.ToString()); ;
-            MaLop = dgv_Student.CurrentRow.Cells["maLop"].Value.ToString();
-            sql = "SELECT maLop FROM Lop WHERE maLop=N'" + MaLop + "'";
-            cb_malop.Text = BaseAccess.GetFieldValues(sql);
-            btn_edit.Enabled = true;
-            btn_del.Enabled = true;
-            btn_skip.Enabled = true;
+            if (student != null)
+            {
+                tbox_masv.Text = student.maSV;
+                tbox_tensv.Text = student.hoTen;
+                datePick_birthDay.Value = student.ngaySinh;
+                cb_malop.Text = student.maLop;
+            }
         }
         private void ResetValues()
         {
-            cb_malop.SelectedIndex = -1;
-            tbox_masv.Text = "";
-            tbox_tensv.Text = "";
-            datePick_birthDay.Value = DateTime.Now; 
+           /* Student emptyStudent = Students.GetEmptyStudent();
+            tbox_masv.Text = emptyStudent.maSV;
+            tbox_tensv.Text = emptyStudent.hoTen;
+            datePick_birthDay.Value = emptyStudent.ngaySinh;
+            cb_malop.Text = emptyStudent.maLop;*/
 
         }
         private void btn_add_Click(object sender, EventArgs e)
@@ -115,39 +97,19 @@ namespace QLHS.Views
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            string sql;
-            if (tbox_masv.Text.Trim().Length == 0)
+            Student student = new Student()
             {
-                MessageBox.Show("Bạn phải nhập mã sinh viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbox_masv.Focus();
-                return;
-            }
-            if (tbox_tensv.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn phải nhập tên sinh viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbox_tensv.Focus();
-                return;
-            }
-            if (cb_malop.SelectedItem == null)
-            {
-                MessageBox.Show("Bạn phải chọn mã lớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cb_malop.Focus();
-                return;
-            }
-            sql = "SELECT maSV FROM SinhVien WHERE maSV=N'" + tbox_masv.Text.Trim() + "'";
+                maSV = tbox_masv.Text,
+                hoTen = tbox_tensv.Text,
+                ngaySinh = datePick_birthDay.Value,
+                maLop = cb_malop.Text
+            };
 
-            if (BaseAccess.CheckKey(sql))
-            {
-                MessageBox.Show("Mã sinh viên này đã có, Vui lòng nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                tbox_masv.Focus();
-                return;
-            }
-            string sqlNgaySinh = datePick_birthDay.Value.ToString("yyyy-MM-dd");
-            sql = "INSERT INTO SinhVien VALUES(N'" + tbox_masv.Text + "', N'" + tbox_tensv.Text + "', N'" + sqlNgaySinh + "', '" + cb_malop.Text + "')";
-
-            BaseAccess.RunSQL(sql);
-            LoadDataGirdView();
+            Students.AddStudent(student);
+            MessageBox.Show("Thêm mới thành công!");
+            LoadDataGridView();
             ResetValues();
+
             btn_del.Enabled = true;
             btn_add.Enabled = true;
             btn_edit.Enabled = true;
@@ -158,77 +120,42 @@ namespace QLHS.Views
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            string sql;
-            if (tblStudent.Rows.Count == 0)
+            Student student = new Student()
             {
-                MessageBox.Show("Không còn dữ liệu", "Thông báo", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-                return;
-            }
-            if (tbox_masv.Text == "")
-            {
-                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbox_masv.Focus();
-                return;
-            }
-            if (tbox_tensv.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn phải nhập tên sinh viên", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbox_tensv.Focus();
-                return;
-            }
-            if (cb_malop.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn phải chọn mã lớp", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cb_malop.Focus();
-                return;
-            }
-            if (datePick_birthDay.Value >= DateTime.Now)
-            {
-                MessageBox.Show("Ngày tháng năm sinh phải bé hơn ngày hiện tại", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                datePick_birthDay.Focus();
-                return;
-            }
-            string sqlNgaySinh = datePick_birthDay.Value.ToString("yyyy-MM-dd");
-            sql = "UPDATE SinhVien SET hoTen=N'" + tbox_tensv.Text + "', ngaySinh=N'" + sqlNgaySinh + "', maLop='" + cb_malop.Text + "' WHERE maSV=N'" + tbox_masv.Text + "'";
-            BaseAccess.RunSQL(sql);
-            LoadDataGirdView();
+                maSV = tbox_masv.Text,
+                hoTen = tbox_tensv.Text,
+                ngaySinh = datePick_birthDay.Value,
+                maLop = cb_malop.Text
+            };
+
+            Students.UpdateStudent(student);
+            MessageBox.Show("Cập nhật thành công!");
+            LoadDataGridView();
             ResetValues();
+
             btn_del.Enabled = true;
             btn_add.Enabled = true;
             btn_edit.Enabled = true;
             btn_skip.Enabled = false;
             btn_save.Enabled = false;
             tbox_masv.Enabled = false;
+
         }
 
         private void btn_del_Click(object sender, EventArgs e)
         {
-            string sql;
-            if (tblStudent.Rows.Count == 0)
-            {
-                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-                return;
-            }
-            if (tbox_masv.Text == "")
-            {
-                MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if (MessageBox.Show("Bạn có muốn xoá bản ghi này không?", "Thông báo",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                sql = "DELETE SinhVien WHERE maSV=N'" + tbox_masv.Text + "'";
-                BaseAccess.RunSqlDel(sql);
-                LoadDataGirdView();
-                ResetValues();
-            }
+            string maSV = tbox_masv.Text;
+            Students.DeleteStudent(maSV);
+            MessageBox.Show("Xóa thành công!");
+            LoadDataGridView();
+            ResetValues();
+
+            btn_del.Enabled = true;
+            btn_add.Enabled = true;
+            btn_edit.Enabled = true;
+            btn_skip.Enabled = false;
+            btn_save.Enabled = false;
+            tbox_masv.Enabled = false;
         }
 
         private void btn_skip_Click(object sender, EventArgs e)
@@ -243,10 +170,9 @@ namespace QLHS.Views
         }
         private void btn_show_Click(object sender, EventArgs e)
         {
-            string sql;
-            sql = "SELECT* FROM SinhVien";
-            tblStudent = DataAccess.BaseAccess.GetDataToTable(sql);
-            bindingSource.DataSource = tblStudent;
+            DataTable students = Students.GetAllStudents();
+            bindingSource.DataSource = students;
+            dgv_Student.DataSource = bindingSource;
         }
 
 
@@ -257,32 +183,19 @@ namespace QLHS.Views
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            string sql;
-            if (tbox_search.Text == "")
-            {
-                MessageBox.Show("Bạn hãy nhập điều kiện tìm kiếm", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            sql = "SELECT * FROM SinhVien WHERE maSV LIKE N'%" + tbox_search.Text + "%' OR hoTen LIKE N'%" + tbox_search.Text + "%' OR maLop LIKE N'%" + tbox_search.Text + "%'";
-            tblStudent = BaseAccess.GetDataToTable(sql);
-            if (tblStudent.Rows.Count == 0)
-                MessageBox.Show("Không có bản ghi thoả mãn điều kiện tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else MessageBox.Show("Có " + tblStudent.Rows.Count + " kết quả tìm kiếm!",
-                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // Liên kết BindingSource với dữ liệu
-            bindingSource.DataSource = tblStudent;
-            ResetValues();
+            string keyword = tbox_search.Text;
+            DataTable students = Students.SearchStudents(keyword);
+            bindingSource.DataSource = students;
+            dgv_Student.DataSource = bindingSource;
         }
 
         private void tbox_search_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                // Ngăn chặn tiếng bíp khi nhấn Enter
+
                 e.SuppressKeyPress = true;
 
-                // Gọi phương thức tìm kiếm
                 btn_search_Click(sender, e);
             }
         }
