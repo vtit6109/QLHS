@@ -26,14 +26,13 @@ namespace QLHS.Controllers
             return students;
         }
 
-        // Trong StudentControl.cs
         public Student GetEmptyStudent()
         {
             return new Student()
             {
                 maSV = "",
                 hoTen = "",
-                ngaySinh = DateTime.MinValue,
+                ngaySinh = DateTime.Now,
                 maLop = ""
             };
         }
@@ -64,7 +63,6 @@ namespace QLHS.Controllers
                     maLop = row["maLop"].ToString()
                 };
             }
-
             return null;
         }
 

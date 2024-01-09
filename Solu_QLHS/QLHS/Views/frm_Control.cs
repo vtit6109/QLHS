@@ -67,5 +67,12 @@ namespace QLHS.Views
             frmFaculty.MdiParent = this;
             frmFaculty.Show();
         }
+
+        private void case_class_Click(object sender, EventArgs e)
+        {
+            frm_Class frmClass = new frm_Class();
+            frmClass.MdiParent = this;
+            frmClass.Show(); 
+        }
     }
 }

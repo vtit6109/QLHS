@@ -132,6 +132,7 @@
             this.case_class.Name = "case_class";
             this.case_class.Size = new System.Drawing.Size(152, 24);
             this.case_class.Text = "Lớp";
+            this.case_class.Click += new System.EventHandler(this.case_class_Click);
             // 
             // case_subject
             // 

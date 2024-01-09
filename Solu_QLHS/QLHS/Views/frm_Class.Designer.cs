@@ -1,6 +1,6 @@
 ﻿namespace QLHS.Views
 {
-    partial class frm_Faculty
+    partial class frm_Class
     {
         /// <summary>
         /// Required designer variable.
@@ -34,13 +34,16 @@
             this.btn_show = new System.Windows.Forms.Button();
             this.btn_search = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.cb_makhoa = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbox_tenkhoa = new System.Windows.Forms.TextBox();
+            this.tbox_tenlop = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbox_makhoa = new System.Windows.Forms.TextBox();
-            this.dgv_Faculty = new System.Windows.Forms.DataGridView();
+            this.tbox_malop = new System.Windows.Forms.TextBox();
+            this.dgv_Class = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btn_exportExcel = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
@@ -52,9 +55,10 @@
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Faculty)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Class)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,11 +67,11 @@
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.panel7);
             this.panel8.Controls.Add(this.panel1);
-            this.panel8.Controls.Add(this.dgv_Faculty);
-            this.panel8.Location = new System.Drawing.Point(28, 72);
+            this.panel8.Controls.Add(this.dgv_Class);
+            this.panel8.Location = new System.Drawing.Point(12, 83);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(761, 509);
-            this.panel8.TabIndex = 6;
+            this.panel8.Size = new System.Drawing.Size(761, 534);
+            this.panel8.TabIndex = 8;
             // 
             // panel7
             // 
@@ -114,20 +118,49 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(18, 75);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(724, 59);
+            this.panel1.Size = new System.Drawing.Size(724, 96);
             this.panel1.TabIndex = 1;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.cb_makhoa);
+            this.panel6.Controls.Add(this.label4);
+            this.panel6.Location = new System.Drawing.Point(365, 5);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(323, 33);
+            this.panel6.TabIndex = 6;
+            // 
+            // cb_makhoa
+            // 
+            this.cb_makhoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_makhoa.FormattingEnabled = true;
+            this.cb_makhoa.Location = new System.Drawing.Point(112, 3);
+            this.cb_makhoa.Name = "cb_makhoa";
+            this.cb_makhoa.Size = new System.Drawing.Size(194, 27);
+            this.cb_makhoa.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(15, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 19);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Mã Khoa";
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.tbox_tenkhoa);
-            this.panel3.Location = new System.Drawing.Point(373, 8);
+            this.panel3.Controls.Add(this.tbox_tenlop);
+            this.panel3.Location = new System.Drawing.Point(24, 54);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(290, 33);
+            this.panel3.Size = new System.Drawing.Size(300, 33);
             this.panel3.TabIndex = 3;
             // 
             // label2
@@ -136,25 +169,25 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(10, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 19);
+            this.label2.Size = new System.Drawing.Size(61, 19);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Tên Khoa";
+            this.label2.Text = "Tên Lớp";
             // 
-            // tbox_tenkhoa
+            // tbox_tenlop
             // 
-            this.tbox_tenkhoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbox_tenkhoa.Location = new System.Drawing.Point(86, 4);
-            this.tbox_tenkhoa.Name = "tbox_tenkhoa";
-            this.tbox_tenkhoa.Size = new System.Drawing.Size(194, 26);
-            this.tbox_tenkhoa.TabIndex = 0;
+            this.tbox_tenlop.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbox_tenlop.Location = new System.Drawing.Point(83, 4);
+            this.tbox_tenlop.Name = "tbox_tenlop";
+            this.tbox_tenlop.Size = new System.Drawing.Size(214, 26);
+            this.tbox_tenlop.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.tbox_makhoa);
-            this.panel2.Location = new System.Drawing.Point(16, 8);
+            this.panel2.Controls.Add(this.tbox_malop);
+            this.panel2.Location = new System.Drawing.Point(24, 8);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(284, 33);
+            this.panel2.Size = new System.Drawing.Size(300, 33);
             this.panel2.TabIndex = 2;
             // 
             // label1
@@ -163,26 +196,26 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(9, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 19);
+            this.label1.Size = new System.Drawing.Size(59, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Mã Khoa";
+            this.label1.Text = "Mã Lớp";
             // 
-            // tbox_makhoa
+            // tbox_malop
             // 
-            this.tbox_makhoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbox_makhoa.Location = new System.Drawing.Point(83, 4);
-            this.tbox_makhoa.Name = "tbox_makhoa";
-            this.tbox_makhoa.Size = new System.Drawing.Size(194, 26);
-            this.tbox_makhoa.TabIndex = 0;
+            this.tbox_malop.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbox_malop.Location = new System.Drawing.Point(83, 4);
+            this.tbox_malop.Name = "tbox_malop";
+            this.tbox_malop.Size = new System.Drawing.Size(214, 26);
+            this.tbox_malop.TabIndex = 0;
             // 
-            // dgv_Faculty
+            // dgv_Class
             // 
-            this.dgv_Faculty.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Faculty.Location = new System.Drawing.Point(18, 140);
-            this.dgv_Faculty.Name = "dgv_Faculty";
-            this.dgv_Faculty.Size = new System.Drawing.Size(724, 313);
-            this.dgv_Faculty.TabIndex = 0;
-            this.dgv_Faculty.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Faculty_CellContentClick);
+            this.dgv_Class.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Class.Location = new System.Drawing.Point(16, 205);
+            this.dgv_Class.Name = "dgv_Class";
+            this.dgv_Class.Size = new System.Drawing.Size(724, 313);
+            this.dgv_Class.TabIndex = 0;
+            this.dgv_Class.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Class_CellContentClick);
             // 
             // panel5
             // 
@@ -194,10 +227,10 @@
             this.panel5.Controls.Add(this.btn_save);
             this.panel5.Controls.Add(this.btn_del);
             this.panel5.Controls.Add(this.btn_add);
-            this.panel5.Location = new System.Drawing.Point(28, 12);
+            this.panel5.Location = new System.Drawing.Point(12, 23);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(761, 54);
-            this.panel5.TabIndex = 5;
+            this.panel5.TabIndex = 7;
             // 
             // btn_exportExcel
             // 
@@ -276,25 +309,27 @@
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // frm_Faculty
+            // frm_Class
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 593);
+            this.ClientSize = new System.Drawing.Size(784, 629);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel5);
-            this.Name = "frm_Faculty";
-            this.Text = "Khoa";
-            this.Load += new System.EventHandler(this.frm_Faculty_Load);
+            this.Name = "frm_Class";
+            this.Text = "frm_Class";
+            this.Load += new System.EventHandler(this.frm_Class_Load);
             this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Faculty)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Class)).EndInit();
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -310,18 +345,21 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbox_tenkhoa;
+        private System.Windows.Forms.TextBox tbox_tenlop;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbox_makhoa;
-        private System.Windows.Forms.DataGridView dgv_Faculty;
+        private System.Windows.Forms.TextBox tbox_malop;
+        private System.Windows.Forms.DataGridView dgv_Class;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btn_exportExcel;
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Button btn_skip;
         private System.Windows.Forms.Button btn_edit;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Button btn_del;
         private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.Button btn_exportExcel;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.ComboBox cb_makhoa;
+        private System.Windows.Forms.Label label4;
     }
 }

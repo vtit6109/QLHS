@@ -95,7 +95,5 @@ namespace QLHS.DataAccess
             reader.Close();
             return ma;
         }
-
-
     }
 }
