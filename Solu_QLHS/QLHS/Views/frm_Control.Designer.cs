@@ -139,6 +139,7 @@
             this.case_subject.Name = "case_subject";
             this.case_subject.Size = new System.Drawing.Size(152, 24);
             this.case_subject.Text = "Môn học";
+            this.case_subject.Click += new System.EventHandler(this.case_subject_Click);
             // 
             // case_score
             // 
